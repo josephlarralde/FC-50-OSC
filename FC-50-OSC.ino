@@ -39,7 +39,6 @@ void setup(){
  for(i=0;i<6;i++) {
    switches[i] = 0;
  }
- //switches[6] = 1;
  
  Ethernet.begin(myMac ,myIp); 
  server.begin(serverPort);
