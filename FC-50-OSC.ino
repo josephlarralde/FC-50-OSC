@@ -78,23 +78,23 @@ void loop() {
   OSCMessage newMes;
   
   if(server.aviableCheck()>0){
- //    Serial.println("alive! ");
-     delay(5);
+    // Serial.println("alive! ");
+    delay(5);
   }
   
   //for(i=0; i<2; i++) {
 
     flag = 0;
     value = digitalRead(switch1Pin);
-    if(value == HIGH && switches[0] == 0) {
+    if (value == HIGH && switches[0] == 0) {
       switches[0] = 1;
       flag = 1;
     }
-    if(value == LOW && switches[0] == 1) {
+    if (value == LOW && switches[0] == 1) {
       switches[0] = 0;
       flag = 1;
     }
-    if(flag == 1) {
+    if (flag == 1) {
       newMes.setAddress(targetIp,destPort);
       newMes.beginMessage("/fc50/switch/1");
       newMes.addArgInt32(1-switches[0]);
@@ -107,15 +107,15 @@ void loop() {
 
     flag = 0;
     value = digitalRead(switch2Pin);
-    if(value == HIGH && switches[1] == 0) {
+    if (value == HIGH && switches[1] == 0) {
       switches[1] = 1;
       flag = 1;
     }
-    if(value == LOW && switches[1] == 1) {
+    if (value == LOW && switches[1] == 1) {
       switches[1] = 0;
       flag = 1;
     }
-    if(flag == 1) {
+    if (flag == 1) {
       newMes.setAddress(targetIp,destPort);
       newMes.beginMessage("/fc50/switch/2");
       newMes.addArgInt32(1-switches[1]);
@@ -128,15 +128,15 @@ void loop() {
 
     flag = 0;
     value = digitalRead(switch3Pin);
-    if(value == HIGH && switches[2] == 0) {
+    if (value == HIGH && switches[2] == 0) {
       switches[2] = 1;
       flag = 1;
     }
-    if(value == LOW && switches[2] == 1) {
+    if (value == LOW && switches[2] == 1) {
       switches[2] = 0;
       flag = 1;
     }
-    if(flag == 1) {
+    if (flag == 1) {
       newMes.setAddress(targetIp,destPort);
       newMes.beginMessage("/fc50/switch/3");
       newMes.addArgInt32(1-switches[2]);
@@ -149,15 +149,15 @@ void loop() {
 
     flag = 0;
     value = digitalRead(switch4Pin);
-    if(value == HIGH && switches[3] == 0) {
+    if (value == HIGH && switches[3] == 0) {
       switches[3] = 1;
       flag = 1;
     }
-    if(value == LOW && switches[3] == 1) {
+    if (value == LOW && switches[3] == 1) {
       switches[3] = 0;
       flag = 1;
     }
-    if(flag == 1) {
+    if (flag == 1) {
       newMes.setAddress(targetIp,destPort);
       newMes.beginMessage("/fc50/switch/4");
       newMes.addArgInt32(1-switches[3]);
@@ -170,15 +170,15 @@ void loop() {
 
     flag = 0;
     value = digitalRead(switch5Pin);
-    if(value == HIGH && switches[4] == 0) {
+    if (value == HIGH && switches[4] == 0) {
       switches[4] = 1;
       flag = 1;
     }
-    if(value == LOW && switches[4] == 1) {
+    if (value == LOW && switches[4] == 1) {
       switches[4] = 0;
       flag = 1;
     }
-    if(flag == 1) {
+    if (flag == 1) {
       newMes.setAddress(targetIp,destPort);
       newMes.beginMessage("/fc50/switch/5");
       newMes.addArgInt32(1-switches[4]);
@@ -191,15 +191,15 @@ void loop() {
 
     flag = 0;
     value = digitalRead(switchAPin);
-    if(value == HIGH && switches[5] == 0) {
+    if (value == HIGH && switches[5] == 0) {
       switches[5] = 1;
       flag = 1;
     }
-    if(value == LOW && switches[5] == 1) {
+    if (value == LOW && switches[5] == 1) {
       switches[5] = 0;
       flag = 1;
     }
-    if(flag == 1) {
+    if (flag == 1) {
       newMes.setAddress(targetIp,destPort);
       newMes.beginMessage("/fc50/switch/6");
       newMes.addArgInt32(1-switches[5]);
@@ -209,6 +209,7 @@ void loop() {
       //}
     }
     delay(3);
+
     //*
     value = analogRead(footSensorPin);
     newMes.setAddress(targetIp,destPort);
@@ -217,7 +218,6 @@ void loop() {
     //send osc message
     client.send(&newMes);
     //Serial.println(value);  
-    
     //*/
   //}
 }
@@ -226,70 +226,63 @@ void loop() {
 
 void led1func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led1Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led1Pin, LOW);
   }
 }
 
 void led2func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led2Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led2Pin, LOW);
   }
 }
 
 void led3func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led3Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led3Pin, LOW);
   }
 }
 
 void led4func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led4Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led4Pin, LOW);
   }
 }
 
 void led5func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led5Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led5Pin, LOW);
   }
 }
 
 void led6func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led6Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led6Pin, LOW);
   }
 }
 
 void led7func(OSCMessage *_mes){
   int value = _mes->getArgInt32(0);
-  if(value==1) {
+  if (value==1) {
     digitalWrite(led7Pin, HIGH);
-  }
-  else if(value==0) {
+  } else if (value==0) {
     digitalWrite(led7Pin, LOW);
   }
 }
